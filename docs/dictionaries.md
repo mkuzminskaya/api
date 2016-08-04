@@ -50,6 +50,7 @@
 <a name="negotiations"></a>
 ## Справочники для откликов/приглашений (переписка)
 * `negotiations_order` - типы порядка отображения откликов
+* `employer_negotiations_order` - типы порядка отображения откликов для работадателя
 * `negotiations_state` - типы состояний откликов
 * `messaging_status` — статус возможности отправки сообщения в переписке
 * `negotiations_participant_type` – типы участников переписки

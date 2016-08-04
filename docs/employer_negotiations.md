@@ -204,7 +204,7 @@ employer_states[].name | строка | название состояния
 Имя | Обязательный | Описание
 --- | ------------ | --------
 vacancy_id | да | Идентификатор вакансии
-order_by | нет | тип сортировки, возможные значения указаны в [справочнике `negotiations_order`](dictionaries.md)
+order_by | нет | тип сортировки, возможные значения указаны в [справочнике `employer_negotiations_order`](dictionaries.md)
 order | нет | направление сортировки. Возможные значения: `asc`, `desc`
 page | нет | Номер страницы, по умолчанию: 0
 per_page | нет | Количество выдаваемых элементов на страницу, по умолчанию: 20
@@ -216,8 +216,8 @@ per_page | нет | Количество выдаваемых элементов
 
 ```json
 {
-    "order_by": "updated_at",
-    "order": "asc"
+    "order_by": "date",
+    "order": "asc",
     "found": 12,
     "pages": 1,
     "page": 0,
@@ -431,7 +431,7 @@ per_page | нет | Количество выдаваемых элементов
 
 Имя | Тип | Описание
 --- | --- | --------
-order_by | нет | тип сортировки, возможные значения указаны в [справочнике `negotiations_order`](dictionaries.md)
+order_by | нет | тип сортировки, возможные значения указаны в [справочнике `employer_negotiations_order`](dictionaries.md)
 order | нет | направление сортировки. Возможные значения: `asc`, `desc`
 found | число | Количество найденных откликов ( ≥ 0 )
 pages | число | Количество страниц с откликами ( ≥ 1 )
@@ -1042,7 +1042,7 @@ Location: /negotiations/321
 
 ```json
 {
-  "order_by": "updated_at"
+  "order_by": "date"
 }
 
 <a name="update-preference-sort"></a>
@@ -1053,7 +1053,7 @@ Location: /negotiations/321
 `PUT /negotiations/preference_sort`
 
 где в качестве параметра необходимо передать order_by - тип сортировки,
-возможные значения указаны в [справочнике `negotiations_order`](dictionaries.md)
+возможные значения указаны в [справочнике `employer_negotiations_order`](dictionaries.md)
 
 ### Ответ
 
