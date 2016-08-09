@@ -138,6 +138,10 @@
             "counters": {
                 "with_updates": 4,
                 "total": 5
+            },
+            "order_by_types": {
+                "by_date",
+                "by_relevance"
             }
         },
         {
@@ -147,6 +151,8 @@
             "counters": {
                 "with_updates": 0,
                 "total": 1
+            },
+            "order_by_types": {
             }
         }
     ],
@@ -180,7 +186,7 @@ collections[].name | строка | название коллекции
 collections[].url | строка | url, на который необходимо делать GET запрос для получения откликов/приглашений данной коллекции
 collections[].counters.with_updates | число | количество откликов/приглашений в коллекции, [требующих внимания](#has_updates)
 collections[].counters.total | число | общее количество откликов/приглашений в коллекции
-collections[].order_by_type | список | возможные варианты сортировки откликов/приглашений в коллекции
+collections[].order_by_types | список | возможные варианты сортировки откликов/приглашений в коллекции
 employer_states | список | [работодательские состояния](#term-employer-state) откликов/приглашений данной вакансии
 employer_states[].id | строка | идентификатор состояния, уникальный как минимум для данной вакансии
 employer_states[].name | строка | название состояния
