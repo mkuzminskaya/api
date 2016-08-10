@@ -139,10 +139,18 @@
                 "with_updates": 4,
                 "total": 5
             },
-            "order_by_types": {
-                "by_date",
-                "by_relevance"
-            }
+            "order_by_types": [
+                {
+                    "id": "date",
+                    "name": "по дате",
+                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=date",
+                },
+                {
+                    "id": "relevance",
+                    "name": "по релевантности",
+                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=relevance",
+                }                
+            ]
         },
         {
             "id": "discarded",
@@ -222,7 +230,10 @@ per_page | нет | Количество выдаваемых элементов
 
 ```json
 {
-    "order_by": "date",
+    "order_by": {
+        "id": "date",
+        "name": "по дате",
+    },
     "found": 12,
     "pages": 1,
     "page": 0,
