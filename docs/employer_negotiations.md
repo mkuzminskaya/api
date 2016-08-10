@@ -147,7 +147,7 @@
                 },
                 {
                     "id": "relevance",
-                    "name": "по релевантности",
+                    "name": "лучшие",
                     "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=relevance",
                 }                
             ]
@@ -160,8 +160,8 @@
                 "with_updates": 0,
                 "total": 1
             },
-            "order_by_types": {
-            }
+            "order_by_types": [
+            ]
         }
     ],
     "employer_states": [
