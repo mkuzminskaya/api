@@ -12,8 +12,8 @@
 * [Отправка сообщения в отклике/приглашении](#add-messages)
 * [Приглашение соискателя на вакансию](#add-invite)
 * [Действия по отклику/приглашению (смена состояния)](#actions)
-* [Просмотр предпочитаемой сортировки откликов] (#get-preference-sort)
-* [Изменение предпочитаемой сортировки откликов] (#update-preference-sort)
+* [Просмотр предпочитаемой сортировки откликов] (#get-preference-order)
+* [Изменение предпочитаемой сортировки откликов] (#update-preference-order)
 
 
 <a name="model"></a>
@@ -139,16 +139,16 @@
                 "with_updates": 4,
                 "total": 5
             },
-            "order_by_types": [
+            "order_types": [
                 {
-                    "id": "date",
-                    "name": "по дате",
-                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=date",
+                    "id": "created_at",
+                    "name": "по дате создания",
+                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=created_at"
                 },
                 {
                     "id": "relevance",
                     "name": "лучшие",
-                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=relevance",
+                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=relevance"
                 }                
             ]
         },
@@ -160,7 +160,12 @@
                 "with_updates": 0,
                 "total": 1
             },
-            "order_by_types": [
+            "order_types": [
+                {
+                    "id": "created_at",
+                    "name": "по дате создания",
+                    "url": "https://api.hh.ru/negotiations/inbox?vacancy_id=123456&order_by=created_at",
+                }
             ]
         }
     ],
@@ -194,7 +199,7 @@ collections[].name | строка | название коллекции
 collections[].url | строка | url, на который необходимо делать GET запрос для получения откликов/приглашений данной коллекции
 collections[].counters.with_updates | число | количество откликов/приглашений в коллекции, [требующих внимания](#has_updates)
 collections[].counters.total | число | общее количество откликов/приглашений в коллекции
-collections[].order_by_types | список | возможные варианты сортировки откликов/приглашений в коллекции
+collections[].order_types | список | возможные варианты сортировки откликов/приглашений в коллекции
 employer_states | список | [работодательские состояния](#term-employer-state) откликов/приглашений данной вакансии
 employer_states[].id | строка | идентификатор состояния, уникальный как минимум для данной вакансии
 employer_states[].name | строка | название состояния
@@ -230,9 +235,9 @@ per_page | нет | Количество выдаваемых элементов
 
 ```json
 {
-    "order_by": {
-        "id": "date",
-        "name": "по дате",
+    "ordered_by": {
+        "id": "created_at",
+        "name": "по дате создания",
     },
     "found": 12,
     "pages": 1,
@@ -1044,12 +1049,12 @@ Location: /negotiations/321
 * `limit_exceeded` - если превышен лимит менеджера на количество приглашений
   в сутки
 
-<a name="get-preference-sort"></a>
+<a name="get-preference-order"></a>
 ## Просмотр предпочитаемой сортировки откликов
 
 ### Запрос
 
-`GET /vacancies/{id}/preferred_negotiations_sort`
+`GET /vacancies/{id}/preferred_negotiations_order`
 
 где id - идентификатор вакансии
 
@@ -1058,21 +1063,22 @@ Location: /negotiations/321
 В ответе вернётся JSON:
 
 ```json
-{
-  "order_by": "date"
-}
+  "order_type": {
+    "id": "created_at",
+    "name": "по дате"
+  }
 ```
 
 ### Ошибки
 
-* `404 Not Found` - вакансия не найдена.
+* `404 Not Found` - вакансия не найдена или просмотр откликов/приглашений по ней не доступен.
 
-<a name="update-preference-sort"></a>
+<a name="update-preference-order"></a>
 ## Изменение предпочитаемой сортировки откликов
 
 ### Запрос
 
-`PUT /vacancies/{id}/preferred_negotiations_sort`
+`PUT /vacancies/{id}/preferred_negotiations_order`
 
 где в качестве параметра необходимо передать order_by - идентификатор типа сортировки
 
@@ -1083,4 +1089,4 @@ Location: /negotiations/321
 ### Ошибки
 
 * `400 Bad Request` – один из обязательных параметров не передан.
-* `404 Not Found` - вакансия не найдена.
+* `404 Not Found` - вакансия не найдена или просмотр откликов/приглашений по ней не доступен.
